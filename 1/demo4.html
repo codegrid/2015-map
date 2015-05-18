@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Google Maps Embed APIを利用した動的な地図の埋め込み</title>
+</head>
+<body>
+
+<script>
+  var landmarks = [
+    '東京スカイツリー',
+    '東京タワー',
+    '横浜ランドマークタワー',
+    '国会議事堂',
+    'エッフェル塔',
+    '通天閣',
+    '東京駅',
+    'エンパイアステートビル',
+    '明治神宮'
+  ];
+
+  var endpoint = "https://www.google.com/maps/embed/v1/place?key=AIzaSyA5dT5ltb2IY3cuJbYo8sRQN1wNPv44w9k";
+
+
+  for( var i = 0,l = landmarks.length ; i < l; i++ ){
+    var element = document.createElement( 'iframe' );
+    element.width = 225;
+    element.height = 225;
+    element.className = 'map-container';
+
+    var apisrc = endpoint + '&q=' +encodeURI( landmarks[i] );
+    element.src = apisrc;
+
+    document.body.appendChild( element );
+  }
+
+</script>
+</body>
+</html>
+
