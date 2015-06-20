@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<title>四角形を描画する | Google Maps JavaScript API</title>
+</head>
+<body>
+<style>
+#google_maps{
+  widht:100%;
+  height:300px;
+}
+</style>
+<div id="google_maps">
+<script>
+  var mapCanvas = document.getElementById('google_maps');
+  var mapOptions = {
+    center : new google.maps.LatLng(35.671657, 139.710748),
+    zoom:17
+  };
+  var myMap = new google.maps.Map(mapCanvas,mapOptions);
+
+  var southWest = new google.maps.LatLng(35.671352, 139.710384);
+  var northEast = new google.maps.LatLng(35.671989, 139.711113);
+  var rectBounds = new google.maps.LatLngBounds(southWest,northEast);
+
+  var rectangle = new google.maps.Rectangle( {bounds:rectBounds} );
+  rectangle.setMap( myMap );
+
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<title>ポリゴンの描画 | Google Maps JavaScript API</title>
+</head>
+<body>
+<style>
+#google_maps{
+  widht:100%;
+  height:300px;
+}
+</style>
+<div id="google_maps">
+<script>
+  var mapCanvas = document.getElementById('google_maps');
+  var mapOptions = {
+    center : new google.maps.LatLng(35.671657, 139.710748),
+    zoom:12
+  };
+  var myMap = new google.maps.Map(mapCanvas,mapOptions);
+
+  var polygonPaths = [
+    new google.maps.LatLng(35.671352, 139.710384),
+    new google.maps.LatLng(35.661352, 139.715384),
+    new google.maps.LatLng(35.661352, 139.725384),
+    new google.maps.LatLng(35.656352, 139.717384),
+    new google.maps.LatLng(35.646352, 139.721384),
+    new google.maps.LatLng(35.653352, 139.710384),
+    new google.maps.LatLng(35.646352, 139.698084),
+    new google.maps.LatLng(35.656352, 139.703384),
+    new google.maps.LatLng(35.661352, 139.694384),
+    new google.maps.LatLng(35.661352, 139.705384)
+  ]
+  var polygon = new google.maps.Polygon( {paths:polygonPaths,fillColor:"yellow",fillOpacity:0.5,strokeColor:"yellow",strokeOpacity:1,strokeWeight:2} );
+  polygon.setMap( myMap );
+
+</script>
+</body>
+</html>
