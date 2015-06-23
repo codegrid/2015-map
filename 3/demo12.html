@@ -5,30 +5,31 @@
 <meta name="viewport" content="width=device-width">
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <title>スタイルを指定した四角形を描画する | Google Maps JavaScript API</title>
-</head>
-<body>
 <style>
 #google_maps{
-  widht:100%;
+  width:100%;
   height:300px;
 }
 </style>
-<div id="google_maps">
-<script>
-  var mapCanvas = document.getElementById('google_maps');
-  var mapOptions = {
-    center : new google.maps.LatLng(35.671657, 139.710748),
-    zoom:17
-  };
-  var myMap = new google.maps.Map(mapCanvas,mapOptions);
+</head>
+<body>
 
-  var southWest = new google.maps.LatLng(35.671352, 139.710384);
-  var northEast = new google.maps.LatLng(35.671989, 139.711113);
-  var rectBounds = new google.maps.LatLngBounds(southWest,northEast);
+  <div id="google_maps"></div>
+  <script>
+    var mapCanvas = document.getElementById('google_maps');
+    var mapOptions = {
+      center : new google.maps.LatLng(35.671657, 139.710748),
+      zoom:17
+    };
+    var myMap = new google.maps.Map(mapCanvas,mapOptions);
 
-  var rectangle = new google.maps.Rectangle( {bounds:rectBounds,fillColor:"#ff0000",fillOpacity:0.5,strokeColor:"#ff0000",strokeOpacity:1,strokeWeight:2} );
-  rectangle.setMap( myMap );
+    var southWest = new google.maps.LatLng(35.671352, 139.710384);
+    var northEast = new google.maps.LatLng(35.671989, 139.711113);
+    var rectBounds = new google.maps.LatLngBounds(southWest,northEast);
 
-</script>
+    var rectangle = new google.maps.Rectangle( {bounds:rectBounds,fillColor:"#ff0000",fillOpacity:0.5,strokeColor:"#ff0000",strokeOpacity:1,strokeWeight:2} );
+    rectangle.setMap( myMap );
+  </script>
+
 </body>
 </html>

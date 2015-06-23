@@ -4,32 +4,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <script src="https://maps.googleapis.com/maps/api/js"></script>
-<title>アイコンの起点をずらす | Google Maps JavaScript API</title>
-</head>
-<body>
+<title>位置がずれたアイコン | Google Maps JavaScript API</title>
 <style>
 #google_maps{
-  widht:100%;
+  width:100%;
   height:300px;
 }
 </style>
-<div id="google_maps">
-<script>
-  var mapCanvas = document.getElementById('google_maps');
-  var mapOptions = {
-    center : new google.maps.LatLng(35.671657, 139.710748),
-    zoom:17
-  };
-  var myMap = new google.maps.Map(mapCanvas,mapOptions);
+</head>
+<body>
 
-  var myIcon = { url:"img/icon_pg_r@2x.png", scaledSize:{width:40,height:50}, anchor:{x:20,y:0} };
-  var markerOptions = {
-    position:new google.maps.LatLng(35.671657, 139.710748),
-    icon:myIcon
-  }
-  var marker = new google.maps.Marker(markerOptions);
-  marker.setMap(myMap);
+  <div id="google_maps"></div>
+  <script>
+    var mapCanvas = document.getElementById('google_maps');
+    var mapOptions = {
+      center : new google.maps.LatLng(35.671657, 139.710748),
+      zoom:4
+    };
+    var myMap = new google.maps.Map(mapCanvas,mapOptions);
 
-</script>
+    var myIcon = { url:"img/icon_pg2.png" };
+    var markerOptions = {
+      position:new google.maps.LatLng(35.671657, 139.710748),
+      icon:myIcon
+    };
+    var marker = new google.maps.Marker(markerOptions);
+    marker.setMap(myMap);
+  </script>
+
 </body>
 </html>
