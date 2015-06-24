@@ -26,8 +26,10 @@
     var southWest = new google.maps.LatLng(35.671352, 139.710384);
     var northEast = new google.maps.LatLng(35.671989, 139.711113);
     var rectBounds = new google.maps.LatLngBounds(southWest,northEast);
-
-    var rectangle = new google.maps.Rectangle( {bounds:rectBounds} );
+    var rectangleOptions = {
+      bounds:rectBounds
+    };
+    var rectangle = new google.maps.Rectangle( rectangleOptions );
     rectangle.setMap( myMap );
 
   </script>

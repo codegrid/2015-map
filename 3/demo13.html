@@ -35,7 +35,15 @@
       new google.maps.LatLng(35.661352, 139.694384),
       new google.maps.LatLng(35.661352, 139.705384)
     ];
-    var polygon = new google.maps.Polygon( {paths:polygonPaths,fillColor:"yellow",fillOpacity:0.5,strokeColor:"yellow",strokeOpacity:1,strokeWeight:2} );
+    var polygonOptions = {
+      paths:polygonPaths,
+      fillColor:"yellow",
+      fillOpacity:0.5,
+      strokeColor:"yellow",
+      strokeOpacity:1,
+      strokeWeight:2
+    };
+    var polygon = new google.maps.Polygon( polygonOptions );
     polygon.setMap( myMap );
   </script>
 
