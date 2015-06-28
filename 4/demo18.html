@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<title>OverlayViewの利用 | Google Maps JavaScript API</title>
+<style>
+#google_maps{
+  width:580px;
+  height:600px;
+}
+
+</style>
+</head>
+<body>
+
+<div id="google_maps"></div>
+<script>
+  var mapCanvas = document.getElementById( 'google_maps' );
+  var mapOptions = {
+    center : new google.maps.LatLng( 35.671657, 139.710748 ),
+    zoom : 12,
+    disableDefaultUI : true
+  };
+  var myMap = new google.maps.Map( mapCanvas, mapOptions );
+
+  var marker = new google.maps.Marker( { position : new google.maps.LatLng( 35.671657, 139.710748 ) } );
+  marker.setMap( myMap );
+
+  var overlayhtml = [
+    '<div class="map-overlayview" id="custom_overlay">',
+    '  <img class="map-overlayview__figure__img" src="img/div_origin.png">',
+    '</div>'
+  ].join("\n");
+
+
+  var overlayLatLng = new google.maps.LatLng( 35.671657, 139.710748 )
+
+  myOverlayView.prototype = new google.maps.OverlayView();
+  var ol = new myOverlayView( overlayhtml, overlayLatLng );
+  ol.setMap( myMap );
+
+
+
+  function myOverlayView ( overlayhtml,latlng ){
+
+    this.html = overlayhtml;
+    this.div;
+    this.position = latlng;
+
+  }
+
+  myOverlayView.prototype.onAdd = function(){
+    var wrapper = this.getPanes().floatPane
+    wrapper.style.height = "600px";
+    wrapper.style.backgroundColor = "rgba( 255, 0, 0, 0.5 )"
+    wrapper.style.border = "solid 3px red";
+    wrapper.innerHTML = this.html;
+
+  }
+
+  myOverlayView.prototype.draw = function(){
+
+  }
+
+  myOverlayView.prototype.onRemove = function(){
+
+  }
+
+
+
+
+
+</script>
+</body>
+</html>

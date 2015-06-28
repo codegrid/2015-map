@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<title>吹き出しの内容をHTMLに | Google Maps JavaScript API</title>
+<style>
+#google_maps {
+  width:100%;
+  height:600px;
+}
+
+.infoWindow-content {
+  text-align: center;
+}
+
+.infoWindow-content_h {
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+  <div id="google_maps"></div>
+
+  <script>
+
+    var mapCanvas = document.getElementById( 'google_maps' );
+    var mapOptions = {
+      center : new google.maps.LatLng( 35.674657, 139.710748 ),
+      zoom : 15
+    };
+    var myMap = new google.maps.Map( mapCanvas, mapOptions );
+
+    var infoWindowContent = [
+      '<div class="infoWindow-content">',
+      '<h1 class="infoWindow-content_h">',
+      '<img src="img/logo.png" alt="Logo" width="128" height="32">',
+      '</h1>',
+      '<p>営業時間：月〜金 10:00 - 18:00</p>',
+      '<a href="http://www.exsample.com/">www.exsample.com</a>'
+    ].join("");
+
+    var infoWindowOptions = {
+      content : infoWindowContent,
+      position : new google.maps.LatLng( 35.671657, 139.710748 )
+    };
+
+    var infoWindow = new google.maps.InfoWindow( infoWindowOptions );
+    infoWindow.open( myMap );
+
+  </script>
+
+</body>
+</html>
