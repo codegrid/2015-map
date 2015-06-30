@@ -20,7 +20,7 @@
   position: absolute;
 }
 
-.map-overlayview__figure{
+.map-overlayview__figure {
   float: left;
   padding: 10px;
   border-right: 1px solid #ccc;
@@ -32,52 +32,45 @@
   padding: 10px;
 }
 
-.map-overlayview__main_h {
+.map-overlayview__h {
   font-size: 0.8em;
 }
 
-.map_overlayview__main__content p{
+.map_overlayview__content p {
   margin: 0;
   font-size: 0.7em;
 }
-
 </style>
 </head>
 <body>
 
 <div id="google_maps"></div>
 <script>
-  var mapCanvas = document.getElementById('google_maps');
+  var mapCanvas = document.getElementById( 'google_maps' );
   var mapOptions = {
-    center : new google.maps.LatLng(35.671657, 139.710748),
+    center : new google.maps.LatLng( 35.671657, 139.710748 ),
     zoom : 12
   };
   var myMap = new google.maps.Map( mapCanvas, mapOptions );
 
   var overlayhtml = [
-    '<div class="map-overlayview" id="custom_overlay">',
-    '  <div class="map-overlayview__figure">',
-    '    <img class="map-overlayview__figure__img" src="img/logo_2.png" width="80" height="80" >',
-    '  </div>',
-    '  <div class="map-overlayview__main">',
-    '    <h2 class="map-overlayview__main_h">株式会社サンプル</h2>',
-    '    <div class="map_overlayview__main__content">',
-    '      <p>営業時間：月〜金 10:00 - 18:00</p>',
+    '  <div class="map-overlayview" id="custom_overlay">',
+    '    <div class="map-overlayview__figure">',
+    '      <img class="map-overlayview__img" src="img/logo_2.png" height="80" width="80" >',
+    '    </div>',
+    '    <div class="map-overlayview__main">',
+    '      <h2 class="map-overlayview__h">株式会社サンプル</h2>',
+    '      <div class="map_overlayview__content">',
+    '        <p>営業時間：月〜金 10:00 - 18:00<p/>',
+    '      </div>',
     '    </div>',
     '  </div>',
-    '</div>'
-  ].join("\n");
+  ].join("");
 
 
   var overlayLatLng = new google.maps.LatLng( 35.671657, 139.710748 )
 
-  myOverlayView.prototype = new google.maps.OverlayView();
-  var ol = new myOverlayView( overlayhtml, overlayLatLng );
-  ol.setMap( myMap );
-
-
-
-  function myOverlayView ( overlayhtml,latlng ){
+  function MyOverlayView ( overlayhtml, latlng ){
 
     this.html = overlayhtml;
     this.div;
@@ -85,14 +78,16 @@
 
   }
 
-  myOverlayView.prototype.onAdd = function(){
+  MyOverlayView.prototype = new google.maps.OverlayView();
+
+  MyOverlayView.prototype.onAdd = function(){
 
     this.getPanes().floatPane.innerHTML = this.html;
     this.div = document.getElementById( "custom_overlay" );
 
   }
 
-  myOverlayView.prototype.draw = function(){
+  MyOverlayView.prototype.draw = function(){
     var point = this.getProjection().fromLatLngToDivPixel( this.position );
     var elementY = point.y - this.div.offsetHeight / 2;
 
@@ -100,14 +95,13 @@
     this.div.style.left = point.x + "px";
   }
 
-  myOverlayView.prototype.onRemove = function(){
+  MyOverlayView.prototype.onRemove = function(){
     this.getPanes().floatPane.removeChild( this.div );
     this.div = null;
   }
 
-
-
-
+  var ol = new MyOverlayView( overlayhtml, overlayLatLng );
+  ol.setMap( myMap );
 
 </script>
 </body>

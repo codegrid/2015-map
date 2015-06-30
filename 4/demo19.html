@@ -6,22 +6,48 @@
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <title>追加するHTML | Google Maps JavaScript API</title>
 <style>
+.map-overlayview {
+  width: 300px;
+  height: 100px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #ccc;
+  position: absolute;
+}
 
+.map-overlayview__figure {
+  float: left;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
 
+.map-overlayview__main {
+  float: left;
+  width: 170px;
+  padding: 10px;
+}
 
+.map-overlayview__h {
+  font-size: 0.8em;
+}
+
+.map_overlayview__content p {
+  margin: 0;
+  font-size: 0.7em;
+}
 </style>
 </head>
 <body>
 
 
-<div class="map-overview">
-  <div class="map-overview__figure">
-    <img class="map-overview__figure__img" src="img/logo_2.png" width="80" height="80" >
+<div class="map-overlayview">
+  <div class="map-overlayview__figure">
+    <img class="map-overlayview__img" src="img/logo_2.png" height="80" width="80" >
   </div>
-  <div class="map-overview__main">
-    <h2 class="map-overview__main_h">株式会社サンプル</h2>
-    <div class="map_overview__main__content">
-      <p>営業時間：月〜金 10:00 - 18:00</p>
+  <div class="map-overlayview__main">
+    <h2 class="map-overlayview__h">株式会社サンプル</h2>
+    <div class="map_overlayview__content">
+      <p>営業時間：月〜金 10:00 - 18:00<p/>
     </div>
   </div>
 </div>

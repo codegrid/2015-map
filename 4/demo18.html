@@ -37,13 +37,7 @@
 
   var overlayLatLng = new google.maps.LatLng( 35.671657, 139.710748 )
 
-  myOverlayView.prototype = new google.maps.OverlayView();
-  var ol = new myOverlayView( overlayhtml, overlayLatLng );
-  ol.setMap( myMap );
-
-
-
-  function myOverlayView ( overlayhtml,latlng ){
+  function MyOverlayView ( overlayhtml,latlng ){
 
     this.html = overlayhtml;
     this.div;
@@ -51,7 +45,9 @@
 
   }
 
-  myOverlayView.prototype.onAdd = function(){
+  MyOverlayView.prototype = new google.maps.OverlayView();
+
+  MyOverlayView.prototype.onAdd = function(){
     var wrapper = this.getPanes().floatPane
     wrapper.style.height = "600px";
     wrapper.style.backgroundColor = "rgba( 255, 0, 0, 0.5 )"
@@ -60,14 +56,16 @@
 
   }
 
-  myOverlayView.prototype.draw = function(){
+  MyOverlayView.prototype.draw = function(){
 
   }
 
-  myOverlayView.prototype.onRemove = function(){
+  MyOverlayView.prototype.onRemove = function(){
 
   }
 
+  var ol = new MyOverlayView( overlayhtml, overlayLatLng );
+  ol.setMap( myMap );
 
 
 
