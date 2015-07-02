@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="data/stations.js"></script>
+<script src="extlib/markerclusterer_compiled.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<title>東京都内の駅をMarkerClustererを利用してクラスタリング | Google Maps JavaScript API</title>
+</head>
+<body>
+<style>
+#google_maps {
+  width: 100%;
+  height: 400px;
+}
+</style>
+<div id="google_maps">
+<script>
+  var mapCanvas = document.getElementById( 'google_maps' );
+  var mapOptions = {
+    center : new google.maps.LatLng( 35.671657, 139.710748 ),
+    zoom : 10
+  };
+  var myMap = new google.maps.Map( mapCanvas, mapOptions );
+
+  var markers=[], marker, markerOptions;
+
+  for( var i = 0, l = stations.length; i < l; i++ ){
+    markerOptions = {
+      position : new google.maps.LatLng( stations[i][1], stations[i][0] )
+    }
+    marker = new google.maps.Marker( markerOptions );
+    markers.push( marker );
+  }
+
+  var markerClusterer = new MarkerClusterer( myMap, markers );
+
+</script>
+</body>
+</html>
