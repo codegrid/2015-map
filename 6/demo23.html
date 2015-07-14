@@ -8,8 +8,8 @@
 <title>シンプルな地図を作成 | Leaflet</title>
 <style>
 #map {
-  width: 580px;
-  height: 580px;
+  width: 490px;
+  height: 570px;
 }
 </style>
 </head>
@@ -23,6 +23,10 @@
     zoom : 15
   };
   var myMap = L.map( mapCanvas, mapOptions );
+
+  var marker = L.marker( L.latLng( 35.671657, 139.710748 ) );
+  myMap.addLayer( marker );
+
 </script>
 </body>
 </html>
