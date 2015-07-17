@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+<title>classNameを使って独自にクラスを与えた吹き出し | Leaflet</title>
+<style>
+#map {
+  width: 100%;
+  height: 570px;
+}
+
+.custom-popup .leaflet-popup-content-wrapper {
+  width: 200px;
+  height: 200px;
+  display: table;
+  border-radius: 100px;
+
+}
+
+.custom-popup .leaflet-popup-content {
+  height: 200px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.custom-popup a.leaflet-popup-close-button {
+  position: relative;
+  top:190px;
+  padding: 0;
+}
+
+.custom-popup .leaflet-popup-tip-container {
+  margin: -2px auto 0 auto;
+}
+
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+<script>
+  var mapCanvas = document.getElementById( 'map' );
+
+  var mapOptions = {
+    center : L.latLng( 35.671657, 139.710748 ),
+    zoom : 15
+    };
+  var myMap = L.map( mapCanvas, mapOptions );
+
+  var osmLayer = L.tileLayer( 'http://{s}.tile.openstreetmap.com/{z}/{x}/{y}.png',{
+    subdomains : ["a", "b", "c"],
+    attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributers'
+  });
+
+  myMap.addLayer( osmLayer );
+
+  var popupContent = [
+    '<div class="infoWindow-content">',
+    '<h1 class="infoWindow-content_h">',
+    '<img src="img/logo.png" alt="Logo" width="128" height="32">',
+    '</h1>',
+    '<p>営業時間：月〜金 10:00 - 18:00</p>',
+    '<a href="http://www.example.com/">www.example.com</a>'
+  ].join("");
+
+  var popupLatlng = L.latLng( 35.671657, 139.710748 );
+
+  var popupOptions = {
+    className : "custom-popup"
+  };
+
+  var popup = L.popup( popupOptions );
+
+  popup.setContent( popupContent );
+  popup.setLatLng( popupLatlng );
+  myMap.addLayer( popup );
+</script>
+</body>
+</html>

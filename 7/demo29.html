@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+<title>classNameを使って独自にクラスを与えた吹き出し | Leaflet</title>
+<style>
+#map {
+  width: 100%;
+  height: 570px;
+}
+
+.map-overlayview {
+  width: 300px;
+  height: 100px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #ccc;
+  position: absolute;
+}
+
+.map-overlayview__figure {
+  float: left;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
+
+.map-overlayview__main {
+  float: left;
+  width: 170px;
+  padding: 10px;
+}
+
+.map-overlayview__h {
+  font-size: 0.8em;
+}
+
+.map_overlayview__content p {
+  margin: 0;
+  font-size: 0.7em;
+}
+
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+<script>
+  var mapCanvas = document.getElementById( 'map' );
+
+  var mapOptions = {
+    center : L.latLng( 35.671657, 139.710748 ),
+    zoom : 15
+    };
+  var myMap = L.map( mapCanvas, mapOptions );
+
+  var osmLayer = L.tileLayer( 'http://{s}.tile.openstreetmap.com/{z}/{x}/{y}.png',{
+    subdomains : ["a", "b", "c"],
+    attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributers'
+  });
+
+  myMap.addLayer( osmLayer );
+
+  var iconHtml = [
+    '  <div class="map-overlayview" id="custom_overlay">',
+    '    <div class="map-overlayview__figure">',
+    '      <img class="map-overlayview__img" src="img/logo_2.png" height="80" width="80" >',
+    '    </div>',
+    '    <div class="map-overlayview__main">',
+    '      <h2 class="map-overlayview__h">株式会社サンプル</h2>',
+    '      <div class="map_overlayview__content">',
+    '        <p>営業時間：月〜金 10:00 - 18:00<p/>',
+    '      </div>',
+    '    </div>',
+    '  </div>',
+  ].join("");
+
+  var divIcon = L.divIcon({
+    className : "cusom-icon",
+    iconAnchor : [ 150, 50 ],
+    html : iconHtml
+  });
+
+  var markerOptions = {
+    icon : divIcon
+  };
+
+  var marker = L.marker( L.latLng( 35.671657, 139.710748 ) , markerOptions );
+  myMap.addLayer( marker );
+</script>
+</body>
+</html>
