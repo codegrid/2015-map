@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-<title>classNameを使って独自にクラスを与えた吹き出し | Leaflet</title>
+<title>地図上にHTMLを追加 | Leaflet</title>
 <style>
 #map {
   width: 100%;
@@ -51,7 +51,7 @@
   var mapCanvas = document.getElementById( 'map' );
 
   var mapOptions = {
-    center : L.latLng( 35.671657, 139.710748 ),
+    center : L.latLng( 35.671657, 139.715748 ),
     zoom : 15
     };
   var myMap = L.map( mapCanvas, mapOptions );
@@ -79,7 +79,7 @@
 
   var divIcon = L.divIcon({
     className : "cusom-icon",
-    iconAnchor : [ 150, 50 ],
+    iconAnchor : [ 0, 50 ],
     html : iconHtml
   });
 
